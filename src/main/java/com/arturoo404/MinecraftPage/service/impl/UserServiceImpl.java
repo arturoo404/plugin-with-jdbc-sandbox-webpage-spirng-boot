@@ -2,6 +2,7 @@ package com.arturoo404.MinecraftPage.service.impl;
 
 import com.arturoo404.MinecraftPage.entity.enums.UserRole;
 import com.arturoo404.MinecraftPage.entity.user.User;
+import com.arturoo404.MinecraftPage.entity.user.dto.UserInfoDto;
 import com.arturoo404.MinecraftPage.entity.user.dto.UserRegistrationDto;
 import com.arturoo404.MinecraftPage.repository.UserRepository;
 import com.arturoo404.MinecraftPage.service.UserService;
@@ -9,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -34,5 +37,16 @@ public class UserServiceImpl implements UserService {
                 .userRole(UserRole.PLAYER)
                 .password(new BCryptPasswordEncoder().encode(userRegistrationDto.getPassword()))
                 .build());
+    }
+
+    @Override
+    public UserInfoDto findAccountInfo(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return UserInfoDto.builder()
+                .playerName(user.get().getMinecraftPlayer().getPlayerName())
+                .playerOnline(user.get().getMinecraftPlayer().isPlayerOnline())
+                .nick(user.get().getNick())
+                .money(user.get().getMinecraftPlayer().getMoney())
+                .build();
     }
 }

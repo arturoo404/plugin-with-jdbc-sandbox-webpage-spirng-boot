@@ -1,7 +1,7 @@
 package com.arturoo404.MinecraftPage.controller;
 
 
-import com.arturoo404.MinecraftPage.entity.dto.PlayerOnlineDto;
+import com.arturoo404.MinecraftPage.entity.minecraftplayer.dto.PlayerOnlineDto;
 import com.arturoo404.MinecraftPage.service.MinecraftPlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

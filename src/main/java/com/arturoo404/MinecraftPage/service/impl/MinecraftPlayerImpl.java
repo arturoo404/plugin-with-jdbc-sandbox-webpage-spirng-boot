@@ -1,7 +1,7 @@
 package com.arturoo404.MinecraftPage.service.impl;
 
-import com.arturoo404.MinecraftPage.entity.MinecraftPlayer;
-import com.arturoo404.MinecraftPage.entity.dto.PlayerOnlineDto;
+import com.arturoo404.MinecraftPage.entity.minecraftplayer.MinecraftPlayer;
+import com.arturoo404.MinecraftPage.entity.minecraftplayer.dto.PlayerOnlineDto;
 import com.arturoo404.MinecraftPage.repository.PlayerRepository;
 import com.arturoo404.MinecraftPage.service.MinecraftPlayerService;
 import org.springframework.stereotype.Service;

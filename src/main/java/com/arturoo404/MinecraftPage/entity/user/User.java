@@ -1,6 +1,6 @@
 package com.arturoo404.MinecraftPage.entity.user;
 
-import com.arturoo404.MinecraftPage.entity.MinecraftPlayer;
+import com.arturoo404.MinecraftPage.entity.minecraftplayer.MinecraftPlayer;
 import com.arturoo404.MinecraftPage.entity.enums.UserRole;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

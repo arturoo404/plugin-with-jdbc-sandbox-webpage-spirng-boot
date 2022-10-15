@@ -1,4 +1,4 @@
-package com.arturoo404.MinecraftPage.entity.dto;
+package com.arturoo404.MinecraftPage.entity.minecraftplayer.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

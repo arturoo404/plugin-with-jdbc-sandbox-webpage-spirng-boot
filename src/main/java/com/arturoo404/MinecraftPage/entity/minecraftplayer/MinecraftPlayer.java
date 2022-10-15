@@ -1,4 +1,4 @@
-package com.arturoo404.MinecraftPage.entity;
+package com.arturoo404.MinecraftPage.entity.minecraftplayer;
 
 import com.arturoo404.MinecraftPage.entity.user.User;
 import lombok.*;
@@ -30,6 +30,11 @@ public class MinecraftPlayer {
             nullable = false
     )
     private String uuid;
+    @Column(
+            name = "money",
+            nullable = false
+    )
+    private Long money;
     @Column(name = "player_online")
     private boolean playerOnline;
     @OneToOne(mappedBy = "minecraftPlayer")

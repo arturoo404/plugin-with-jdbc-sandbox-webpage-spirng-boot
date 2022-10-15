@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Account</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+            integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <link rel="stylesheet"  th:href="@{/css/css_body.css}">
 </head>
-<body>
-$END$
+<body style="background-color: rgb(48,48,48)">
+<div th:replace="~{part/navbar :: navbar}" style="margin-bottom: 50px"></div>
+<div style="margin-right: 20%; margin-left: 20%; height: 500px; display: flex; background-color: dimgray" class="text-center">
+    <div style="width: 25%;">
+
+    </div>
+    <div style="width: 50%">
+
+    </div>
+    <div style="width: 25%;">
+        <div class="card" style="width: 18rem; height: 500px; background-color: rgb(72,72,72)">
+            <div class="card-body text-white">
+                <h3 class="card-title mt-2">[[${user.nick}]]</h3>
+                <p class="card-text mt-2"><b>Game nick:</b> [[${user.playerName}]]</p>
+                <p class="card-text mt-2"
+                   style="color: green"
+                   th:if="${user.playerOnline} == true">
+                    <b class="text-white">Status:</b> Online</p>
+                <p class="card-text mt-2"
+                   style="color: red"
+                   th:if="${user.playerOnline} == false">
+                    <b class="text-white">Status:</b> Offline</p>
+                <p class="card-text mt-2"><b>Money: </b>[[${user.money}]]</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

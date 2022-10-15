@@ -11,12 +11,12 @@
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 <head>
     <meta charset="UTF-8">
-    <title>Restaurant Online</title>
+    <title>Minecraft Page</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Restaurant</a>
+        <a class="navbar-brand" th:href="@{/}">Minecraft Server Page</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,50 +27,16 @@
                     <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/product/kebab}">Kebab</a>
+                    <a class="nav-link" type="" th:href="@{/shop}">Shop</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/product/pizza}">Pizza</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/product/fast_food}">Fast food</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/product/drinks}">Drinks</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" th:href="@{/product/add}">Add new product</a>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="hasAuthority('USER')">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Account
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/cart/list/{account} (account = ${#authentication.getPrincipal().getUsername()})}">Carts</a></li>
-                        <li><a class="dropdown-item" th:href="@{/order/user/detail/{account} (account = ${#authentication.getPrincipal().getUsername()})}">Orders</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown" sec:authorize="hasAuthority('EMPLOY')">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownEmp" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        ORDERS
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item"  th:href="@{/order/receive/new}">Receive</a></li>
-                        <li><a class="dropdown-item"  th:href="@{/order/receive/prepared}">Prepared</a></li>
-                        <li><a class="dropdown-item"  th:href="@{'/order/history?page=0&sort=desc'}">All orders history</a></li>
-                    </ul>
+                <li class="nav-item" sec:authorize="hasAuthority('PLAYER')">
+                    <form th:action="@{/account}" type="GET">
+                        <input type="hidden" th:name="email" th:value="${#authentication.getPrincipal().getUsername()}">
+                        <input type="submit" class="btn btn-outline-secondary" value="Account" />
+                    </form>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item me-4" sec:authorize="hasAuthority('USER')">
-                    <form th:action="@{/cart/detail}" type="GET">
-                        <input type="hidden" th:name="email" th:value="${#authentication.getPrincipal().getUsername()}">
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-                    <input type="image" th:src="@{/photo/cart.png}" style="width: 50px; height: 50px" />
-                    </form>
-                </li>
                 <li class="nav-item me-4" sec:authorize="isAnonymous()">
                     <a class="btn btn-outline-success" th:href="@{/login}">Login</a>
                 </li>

@@ -10,4 +10,9 @@ public class BasicPageController {
     public String loginPage(){
         return "basic/login_page";
     }
+
+    @GetMapping(path = "/")
+    public String homePage(){
+        return "basic/home";
+    }
 }
